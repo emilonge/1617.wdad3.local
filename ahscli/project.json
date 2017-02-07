@@ -1,10 +1,18 @@
 {
+  "name": "ahscli",
+  "title": "Artevelde Commandline Interface Applicatie",
+  "description": "Commandline Interface Applicatie (CLI) for usage in the Artevelde University College Ghent",
+  "copyright": "Artevelde University College Ghent",
+  "authors": ["Philippe De Pauw - Waterschoot"],
   "version": "1.0.0-*",
   "buildOptions": {
     "debugType": "portable",
     "emitEntryPoint": true
   },
   "dependencies": {
+    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0-preview1-final",
+    "Microsoft.Extensions.PlatformAbstractions": "1.1.0-preview1-final",
+    "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.1.0-preview1-final",
     "Microsoft.Extensions.CommandLineUtils": {
       "version": "1.1.0-*",
       "type": "build"

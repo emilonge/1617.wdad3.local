@@ -31,9 +31,10 @@ namespace Models
 
         public string ToConsoleString() 
         {
-            var tempStr = "Small Picture:\t{0}\r\nMedium Picture:\t{1}\r\nLarge Picture:\t{2}";
-
-            return String.Format(tempStr,SmallURL,MediumURL,LargeURL);
+            return $@"
+Small Picture:  { SmallURL }
+Medium Picture: { MediumURL }
+Large Picture:  { LargeURL }";
         }
     }
 }

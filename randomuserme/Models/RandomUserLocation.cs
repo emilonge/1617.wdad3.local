@@ -31,7 +31,6 @@ namespace Models
         public override string ToString() 
         {
             var tempStr = "{0} {1}-{2} ({3})";
-
             return String.Format(tempStr,Street,PostalCode,City,State);
         }
     }

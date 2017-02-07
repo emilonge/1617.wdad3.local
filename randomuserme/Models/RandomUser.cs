@@ -40,18 +40,17 @@ namespace Models
 
         public string ToConsoleString() 
         {
-            var tempStr = "";
-            tempStr += "Name:\t\t" + Name.ToString();
-            tempStr += "\r\nGender:\t\t" + Gender;
-            tempStr += "\r\nDay of birth:\t" + DayOfBirth;
-            tempStr += "\r\nNationality:\t" + Nationality;
-            tempStr += "\r\nTel:\t\t" + TEL;
-            tempStr += "\r\nGSM:\t\t" + GSM;
-            tempStr += "\r\nAddress:\t" + Location.ToString();
-            tempStr += "\r\n" + Picture.ToConsoleString();
-            tempStr += "\r\n" + Login.ToConsoleString();
-
-            return tempStr;
+            return $@"
+Name:           { Name.ToString() }
+Gender:         { Gender }
+Day of birth:   { DayOfBirth }
+Nationality:    { Nationality }
+Tel:            { TEL }
+GSM:            { GSM }
+Address:        { Location.ToString() }
+{ Picture.ToConsoleString() }
+{ Login.ToConsoleString() }
+                ";
         }
     }
 }

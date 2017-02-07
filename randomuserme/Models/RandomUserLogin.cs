@@ -36,9 +36,11 @@ namespace Models
 
         public string ToConsoleString() 
         {
-            var tempStr = "Username:\t{0}\r\nPassword:\t{1}\r\nSalt:\t\t{2}\r\nSha256:\t\t{3}";
-
-            return String.Format(tempStr,Username,Password,Salt,SHA256);
+            return $@"
+Username:       { Username }
+Password:       { Password }
+Salt            { Salt }
+SHA256:         { SHA256 }";
         }
     }
 }
