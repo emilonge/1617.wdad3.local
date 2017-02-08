@@ -10,9 +10,9 @@
     "emitEntryPoint": true
   },
   "dependencies": {
-    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0-preview1-final",
-    "Microsoft.Extensions.PlatformAbstractions": "1.1.0-preview1-final",
-    "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.1.0-preview1-final",
+    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0-*",
+    "Microsoft.Extensions.PlatformAbstractions": "1.1.0-*",
+    "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.1.0-*",
     "Microsoft.Extensions.CommandLineUtils": {
       "version": "1.1.0-*",
       "type": "build"
