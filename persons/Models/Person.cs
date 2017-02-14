@@ -48,14 +48,14 @@ namespace Models
         { 
             get; 
             set; 
-        }
+        }   
 
         public Person() : base()
         {
             
         }
 
-        public Person(string firstName, string surName) : base()
+        public Person(string firstName, string surName) : this()
         {
             FirstName = firstName;
             SurName = surName;
