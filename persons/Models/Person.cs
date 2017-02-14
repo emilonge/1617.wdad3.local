@@ -2,25 +2,73 @@ using System;
 
 namespace Models
 {
+    public enum GenderType : byte {
+        Unknown = 0,
+        Male = 1,
+        Female = 2,
+        NotApplicable = 9
+    }
+
+    public enum MartialStatusType : byte {
+        Unknown = 1,
+        Single = 2,
+        LivingTogether = 3,
+        Engaged = 4,
+        Married = 5,
+        Seperated = 6,
+        Divorced = 7,
+        Widow = 8
+    }
+
     public class Person : IPerson
     {
-        protected int _id;
-        protected string _firstName;
-        protected string _surName;
-
-        public Person(string firstName, string surName) {
-            this._firstName = firstName;
-            this._surName = surName;
+        public Int32 Id
+        {
+            get;
+            set;
+        }
+        public string FirstName
+        {
+            get;
+            set;
+        }
+        public string SurName
+        {
+            get;
+            set;
         }
 
-        public string FullName {
-            get {
-                return this._firstName + " " + this._surName;
-            }
+        public GenderType Gender 
+        { 
+            get; 
+            set; 
         }
 
-        public virtual string ToString() {
-            return String.Format("Person: {0} {1}", this._firstName, this._surName);
+        public MartialStatusType MartialStatus 
+        { 
+            get; 
+            set; 
+        }
+
+        public Person() : base()
+        {
+            
+        }
+
+        public Person(string firstName, string surName) : base()
+        {
+            FirstName = firstName;
+            SurName = surName;
+        }
+
+        public Person(Int32 id, string firstName, string surName) : this(firstName, surName)
+        {
+            Id = id;
+        }
+
+        public override string ToString()
+        {
+            return String.Format("Person:\t {0} {1}", FirstName, SurName);
         }
     }
 }

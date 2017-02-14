@@ -4,14 +4,30 @@ namespace Models
 {
     public class Student : Person
     {
-        private string _number;
-
-        public Student(string firstName, string surName, string number) : base(firstName, surName) {
-            this._number = number;
+        public string StudentNr
+        {
+            get;
+            set;
         }
 
-        public override string ToString() {
-            return String.Format("Student: {0} {1}", this._firstName, this._surName);
+        public Student() : base()
+        {
+            
+        }
+
+        public Student(string firstName, string surName, string studentNr) : base(firstName, surName)
+        { 
+            StudentNr = studentNr;
+        }
+
+        public Student(Int32 id, string firstName, string surName, string studentNr) : base(id, firstName, surName)
+        {
+            StudentNr = studentNr;
+        }
+
+        public override string ToString() 
+        {
+            return String.Format("Student: {0} {1} - nr: {2}", FirstName, SurName, StudentNr);
         }
     }
 }

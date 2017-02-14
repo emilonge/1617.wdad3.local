@@ -10,11 +10,12 @@ namespace ConsoleApplication
         {
             List<IPerson> persons = new List<IPerson>
             {
-                new Employee("Philippe", "De Pauw", "666-66-666"),
-                new Student("Sir", "I Can Do Everything", "123456")  
+                new Person(1, "Olivier", "Parent"),
+                new Student(2, "Philippe", "De Pauw - Waterschoot", "66-6666-666-90210"),
+                new Lecturer(3, "Daniel", "Termont", 29230.65)
             };
 
-            foreach (var person in persons)
+            foreach(var person in persons)
             {
                 Console.WriteLine(person.ToString());
             }
