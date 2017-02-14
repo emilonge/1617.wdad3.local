@@ -22,7 +22,7 @@ namespace Models
 
     public class Person : IPerson
     {
-        public Int32 Id
+        public Int32? Id
         {
             get;
             set;
@@ -38,13 +38,13 @@ namespace Models
             set;
         }
 
-        public GenderType Gender 
+        public Nullable<GenderType> Gender 
         { 
             get; 
             set; 
         }
 
-        public MartialStatusType MartialStatus 
+        public Nullable<MartialStatusType> MartialStatus 
         { 
             get; 
             set; 

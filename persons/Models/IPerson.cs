@@ -4,7 +4,7 @@ namespace Models
 {
     public interface IPerson
     {
-        Int32 Id
+        Int32? Id
         {
             get;
             set;
