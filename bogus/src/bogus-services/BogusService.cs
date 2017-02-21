@@ -12,10 +12,9 @@ namespace Bogus.Services
         {
             // Make skeleton of User via Bogus (Library)
             var userSkeleton = new Faker<User>()
-                .RuleFor(u => u.FirstName, f => f.Name.FirstName())
-                .RuleFor(u => u.SurName, f => f.Name.LastName())
-                .RuleFor(u => u.UserName, (f, u) => f.Internet.UserName(u.FirstName, u.SurName))
-                .RuleFor(u => u.Email, (f, u) => f.Internet.Email(u.FirstName, u.SurName))
+                .RuleFor(u => u.Id, f => f.UniqueIndex)
+                .RuleFor(u => u.UserName, (f, u) => f.Internet.UserName(f.Person.FirstName, f.Person.LastName))
+                .RuleFor(u => u.Email, (f, u) => f.Internet.Email(f.Person.FirstName, f.Person.LastName))
                 .RuleFor(u => u.PlainPassword, f => "Slaam_1889");
 
             return userSkeleton.Generate();
@@ -25,6 +24,7 @@ namespace Bogus.Services
         {
             // Make skeleton of User via Bogus (Library)
             var personSkeleton = new Faker<Bogus.Models.Person>()
+                .RuleFor(u => u.Id, f => f.UniqueIndex)
                 .RuleFor(u => u.FirstName, f => f.Name.FirstName())
                 .RuleFor(u => u.SurName, f => f.Name.LastName())
                 .RuleFor(u => u.Gender, f => f.PickRandom<GenderType>())

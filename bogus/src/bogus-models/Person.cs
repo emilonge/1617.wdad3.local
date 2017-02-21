@@ -32,6 +32,7 @@ namespace Bogus.Models
         public virtual string ToConsoleString()
         {
             return $@"
+Id:             { Id }
 Firstname:      { FirstName }
 Surname:        { SurName }
 Gender:         { Gender }
