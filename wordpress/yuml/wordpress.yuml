@@ -1,0 +1,9 @@
+// {type:class}
+// {direction:topDown}
+[note: You can stick notes on diagrams too!{bg:cornsilk}]
+[Order]++*-*>[LineItem]
+[Order]-1>[DeliveryMethod]
+[Blog]*-*>[Post|EAN_Code|promo_price()]
+[Category]<->[Post]
+[DeliveryMethod]^[National]
+[DeliveryMethod]^[International]
