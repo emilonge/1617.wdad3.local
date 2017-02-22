@@ -24,7 +24,7 @@ namespace ConsoleApplication
             }
 
             // Create Users (accounts)
-            var usersList = new List<User>();
+            List<User> usersList = new List<User>();
             for(var i=0;i<100;i++)
             {
                 usersList.Add(BogusService.GenerateRandomUser()); 
@@ -40,6 +40,14 @@ namespace ConsoleApplication
                 Console.WriteLine("##########################################################################");
                 Console.WriteLine(user.ToConsoleString());
             }
+
+            // Count the amount of robots (no person)
+            var amountOfRobots = usersList.FindAll(u => u.PersonId != null).Count;
+            Console.WriteLine("##########################################################################");
+            Console.WriteLine($@"
+Amount of Robots:   { amountOfRobots }
+Amount of humans:   { ( usersList.Count - amountOfRobots )}
+            ");
         }
     }
 }
