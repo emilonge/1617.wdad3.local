@@ -42,11 +42,13 @@ namespace ConsoleApplication
             }
 
             // Count the amount of robots (no person)
-            var amountOfRobots = usersList.FindAll(u => u.PersonId != null).Count;
+            var amountOfRobots = usersList.FindAll(u => u.PersonId == null).Count;
             Console.WriteLine("##########################################################################");
             Console.WriteLine($@"
 Amount of Robots:   { amountOfRobots }
-Amount of humans:   { ( usersList.Count - amountOfRobots )}
+Amount of Humans:   { ( personList.Count )}
+Amount of Divorced: { ( personList.FindAll(p => p.MartialStatus == MartialStatusType.Divorced).Count )}
+Amount of Females:  { ( personList.FindAll(p => p.Gender == GenderType.Female).Count )}
             ");
         }
     }
