@@ -14,33 +14,59 @@ namespace Eduportal.Db
 {
     public class ApplicationDbContextSeeder 
     {
-        public static async void Initialize(IServiceProvider serviceProvider)
+        public static void Initialize()
         {
-            using(var context = serviceProvider.GetService<ApplicationDbContext>()) 
+            ApplicationDbContextSeeder.Seeding(new ApplicationDbContextFactory().Create()).Wait();
+        }
+
+        public static void Initialize(IServiceProvider serviceProvider)
+        {
+            ApplicationDbContextSeeder.Seeding(serviceProvider.GetService<ApplicationDbContext>()).Wait();
+        }
+
+        private static async Task Seeding(ApplicationDbContext context)
+        {
+            using(context) 
             {
+                var random = new Random();
+
                 // Create Random Posts
                 if(!context.Posts.Any())
                 {
                     var lorem = new Bogus.DataSets.Lorem(locale: "nl");
                     var postSkeleton = new Faker<Post>()
-                        .RuleFor(p => p.Title, f => lorem.Sentence());
+                        .RuleFor(p => p.Title, f => lorem.Sentence())
+                        .RuleFor(p => p.Description, f => String.Join(" ", lorem.Words(5)))
+                        .RuleFor(p => p.Body, f => lorem.Paragraphs(random.Next(5, 15)))
+                        .RuleFor(p => p.CreatedAt, f => DateTime.Now)
+                        .FinishWith((f, u) =>
+                        {
+                            Console.WriteLine("Post created with Bogus: {0}!", u.Title);
+                        });
 
-                    var post = postSkeleton.Generate();
+                    var posts = new List<Post>();
 
-                    context.Posts.Add(post);
+                    for(var i = 0; i < 25;i++)
+                    {
+                        var post = postSkeleton.Generate();
+                        posts.Add(post);
+                    }
+
+                    context.Posts.AddRange(posts);
                     await context.SaveChangesAsync();
                 }
-                
             }
         }
         
-        private static DateTime GenerateDateTime(int yFrom, int yTo, int mFrom, int mTo, int dFrom, int dTo) {
+        private static DateTime GenerateDateTime(int yFrom, int yTo, int mFrom, int mTo, int dFrom, int dTo) 
+        {
             var random = new Random();
             try
             {
                 return new DateTime(random.Next(yFrom, yTo), random.Next(mFrom, mTo), random.Next(dFrom, dTo));
             }
-            catch(Exception ex) {
+            catch(Exception ex) 
+            {
                 return GenerateDateTime(yFrom, yTo, mFrom, mTo, dFrom, dTo);
             }
         }

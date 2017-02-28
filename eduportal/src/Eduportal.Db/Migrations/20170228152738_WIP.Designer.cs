@@ -8,8 +8,8 @@ using Eduportal.Db;
 namespace Eduportal.Db.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170228142220_Initial Commit")]
-    partial class InitialCommit
+    [Migration("20170228152738_WIP")]
+    partial class WIP
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

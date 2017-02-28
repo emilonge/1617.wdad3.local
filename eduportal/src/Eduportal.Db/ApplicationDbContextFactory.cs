@@ -7,6 +7,11 @@ namespace Eduportal.Db
 {
     public class ApplicationDbContextFactory : IDbContextFactory<ApplicationDbContext>
     {
+        public ApplicationDbContext Create()
+        {
+            return Create(null);
+        }
+
         public ApplicationDbContext Create(DbContextFactoryOptions options)
         {
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();

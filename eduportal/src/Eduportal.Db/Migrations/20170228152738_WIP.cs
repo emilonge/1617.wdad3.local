@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Eduportal.Db.Migrations
 {
-    public partial class InitialCommit : Migration
+    public partial class WIP : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

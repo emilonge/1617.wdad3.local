@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 
 namespace Eduportal.Db
 {
@@ -6,7 +7,7 @@ namespace Eduportal.Db
     {
         public static void Main(string[] args)
         {
-            
+            ApplicationDbContextSeeder.Initialize();
         }
     }
 }
