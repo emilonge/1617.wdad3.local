@@ -18,7 +18,19 @@ namespace Eduportal.Db
         {
             using(var context = serviceProvider.GetService<ApplicationDbContext>()) 
             {
-                await context.SaveChangesAsync();
+                // Create Random Posts
+                if(!context.Posts.Any())
+                {
+                    var lorem = new Bogus.DataSets.Lorem(locale: "nl");
+                    var postSkeleton = new Faker<Post>()
+                        .RuleFor(p => p.Title, f => lorem.Sentence());
+
+                    var post = postSkeleton.Generate();
+
+                    context.Posts.Add(post);
+                    await context.SaveChangesAsync();
+                }
+                
             }
         }
         
