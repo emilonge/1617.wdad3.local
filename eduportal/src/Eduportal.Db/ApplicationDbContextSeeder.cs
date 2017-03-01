@@ -55,6 +55,32 @@ namespace Eduportal.Db
                     context.Posts.AddRange(posts);
                     await context.SaveChangesAsync();
                 }
+
+                // Create Random Persons
+                if(!context.Persons.Any())
+                {
+                    var personSkeleton = new Faker<Eduportal.Models.Person>()
+                        .RuleFor(u => u.FirstName, f => f.Name.FirstName())
+                        .RuleFor(u => u.SurName, f => f.Name.LastName())
+                        .RuleFor(u => u.Gender, f => f.PickRandom<GenderType>())
+                        .RuleFor(u => u.MartialStatus, f => f.PickRandom<MartialStatusType>())
+                        .RuleFor(u => u.DayOfBirth, f => f.Person.DateOfBirth)
+                        .FinishWith((f, u) =>
+                        {
+                            Console.WriteLine("Person created with Bogus: {0} {1}!", u.FirstName, u.SurName);
+                        });
+
+                    var persons = new List<Eduportal.Models.Person>();
+
+                    for(var i = 0; i < 250;i++)
+                    {
+                        var person = personSkeleton.Generate();
+                        persons.Add(person);
+                    }
+
+                    context.Persons.AddRange(persons);
+                    await context.SaveChangesAsync();
+                }
             }
         }
         
